@@ -1,24 +1,31 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="jsgantt/jsgantt.css"/>
     <script type="text/javascript" src="jsgantt/jsgantt.js"></script>
+    <script type="text/javascript" src="E:\Epic Codes\IntegraMES7.0.2\Jiaheng\work\Java\integranetdemo\WebContent\js\jquery-1.4.4.min.js"></script>
 </head>
 
+<script type="text/javascript">
+
+    $(function( ){
+
+    });
+
+</script>
 <body>
 
 <div id="GanttChartDIV"></div>
 
 <script type="text/javascript">
 
-    var g = new JSGantt.GanttChart('g',document.getElementById('GanttChartDIV'), 'day');
+   var g = new JSGantt.GanttChart('g',document.getElementById('GanttChartDIV'), 'day');
 
     g.setShowRes(1); // Show/Hide Responsible (0/1)
     g.setShowDur(1); // Show/Hide Duration (0/1)
     g.setShowComp(1); // Show/Hide % Complete(0/1)
+    g.setFormatArr("week","month","quarter","hours","minutes");
     g.setCaptionType('Resource');  // Set to Show Caption (None,Caption,Resource,Duration,Complete)
-
     if( g ) {
 
         // Parameters             (pID, pName,                  pStart,      pEnd,        pColor,   pLink,          pMile, pRes,  pComp, pGroup, pParent, pOpen, pDepend, pCaption)
@@ -26,7 +33,7 @@
         // You can also use the XML file parser JSGantt.parseXML('project.xml',g)
 
         g.AddTaskItem(new JSGantt.TaskItem(1,   'Define Chart API',     '',          '',          'ff0000', 'http://help.com', 0, 'Brian',     0, 1, 0, 1));
-        g.AddTaskItem(new JSGantt.TaskItem(11,  'Chart Object',         '1/20/2012', '3/20/2012', 'ff00ff', 'http://www.yahoo.com', 1, 'Shlomy',  100, 0, 1, 1));
+        g.AddTaskItem(new JSGantt.TaskItem(11,  'Chart Object',         '7/20/2008', '7/20/2008', 'ff00ff', 'http://www.yahoo.com', 1, 'Shlomy',  100, 0, 1, 1));
         g.AddTaskItem(new JSGantt.TaskItem(12,  'Task Objects',         '',          '',          '00ff00', '', 0, 'Shlomy',   40, 1, 1, 1));
         g.AddTaskItem(new JSGantt.TaskItem(121, 'Constructor Proc',     '7/21/2008', '8/9/2008',  '00ffff', 'http://www.yahoo.com', 0, 'Brian T.', 60, 0, 12, 1));
         g.AddTaskItem(new JSGantt.TaskItem(122, 'Task Variables',       '8/6/2008',  '8/11/2008', 'ff0000', 'http://help.com', 0, 'Brian',         60, 0, 12, 1,121));
@@ -49,7 +56,7 @@
 
 
         g.Draw();
-        g.DrawDependencies();
+//        g.DrawDependencies();
 
     }
 </script>

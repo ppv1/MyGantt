@@ -573,7 +573,7 @@ JSGantt.GanttChart =  function(pGanttVar, pDiv, pFormat)
 * @type String 
 * @default "mm/dd/yy"
 * @private
-*/var vDateDisplayFormat = "mm/dd/yy";
+*/var vDateDisplayFormat = "mm/dd/yyyy";
 
 	  var vNumUnits  = 0;
       var vCaptionType;
@@ -595,7 +595,7 @@ JSGantt.GanttChart =  function(pGanttVar, pDiv, pFormat)
 */ this.setFormatArr = function() 	 {
 										  vFormatArr = new Array();
 										  for(var i = 0; i < arguments.length; i++) {vFormatArr[i] = arguments[i];}
-										  if(vFormatArr.length>4){vFormatArr.length=4;}
+//										  if(vFormatArr.length>4){vFormatArr.length=4;}
 										 };
 /**
 * Show/Hide resource column
@@ -693,6 +693,8 @@ Complete-Displays task percent complete</p>
 * @method getDateDisplayFormat
 * @return {String}
 */  this.getDateDisplayFormat = function() { return vDateDisplayFormat };
+
+    this.setDataDisplayFormat=function(){ this.vDateDisplayFormat}
 /**
 * Returns current gantt caption type
 * @method getCaptionType
@@ -950,6 +952,8 @@ Complete-Displays task percent complete</p>
          else if(vFormat == 'quarter') {
             vColWidth = 60;
             vColUnit = 90;
+
+
          }
          
          else if(vFormat=='hour')
@@ -1160,7 +1164,9 @@ Complete-Displays task percent complete</p>
                {
                  vTmpDate.setDate(vTmpDate.getDate() + 1);
                }
-            }
+            }else if(vFormat==''){
+
+               }
 
          }
 
@@ -1905,9 +1911,9 @@ JSGantt.folder= function (pID,ganttObj) {
             JSGantt.show(pID, 1, ganttObj);
 
                if (JSGantt.isIE()) 
-                  {JSGantt.findObj('group_'+pID).innerText = '–';}
+                  {JSGantt.findObj('group_'+pID).innerText = 'ï¿½';}
                else
-                  {JSGantt.findObj('group_'+pID).textContent = '–';}
+                  {JSGantt.findObj('group_'+pID).textContent = 'ï¿½';}
 
          }
 
@@ -1979,7 +1985,7 @@ JSGantt.show =  function (pID, pTop, ganttObj) {
          } else {
 
             if (JSGantt.isIE()) { // IE;
-               if( JSGantt.findObj('group_'+pID).innerText == '–') {
+               if( JSGantt.findObj('group_'+pID).innerText == 'ï¿½') {
                   JSGantt.findObj('child_'+vID).style.display = "";
                   JSGantt.findObj('childgrid_'+vID).style.display = "";
                   vList[i].setVisible(1);
@@ -1987,7 +1993,7 @@ JSGantt.show =  function (pID, pTop, ganttObj) {
 
             } else {
 
-               if( JSGantt.findObj('group_'+pID).textContent == '–') {
+               if( JSGantt.findObj('group_'+pID).textContent == 'ï¿½') {
                   JSGantt.findObj('child_'+vID).style.display = "";
                   JSGantt.findObj('childgrid_'+vID).style.display = "";
                   vList[i].setVisible(1);
